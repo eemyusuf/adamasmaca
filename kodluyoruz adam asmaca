@@ -1,0 +1,38 @@
+import random
+
+kelimeler = ["python","pigeon","difficult","easy","clasroom","engineer"]
+kelime = random.choice(kelimeler) #rastgele bir kelime seçtik
+
+harfler = [] #kullanicinin girdigi tum harfleri bu listeye ekleyerek tekrar ayni harf girilirse uyari verecegiz
+x = len(kelime)
+z = list('_' * x)
+print(' '.join(z), end='\n')
+while 1:
+    y = input("Bir harf tahmin edin : ")
+
+    if len(y) > 1:
+        print("Lutfen sadece bir harf girin.")
+        continue
+
+    elif y not in kelime:   #girilen harf kelime icinde yoksa eger
+        print("yanlis tahmin!")
+
+    else:
+        for i in range(len(kelime)):
+            if y == kelime[i]:
+                print("Dogru Tahmin")
+                z[i] = y
+                harfler.append(y)
+        print(' '.join(z), end='\n')
+
+    cevap = input("Kelimenin tamamini tahmin etmek istiyor musunuz? ['e' veya 'h'] : ")
+
+    if cevap == "e":
+        tahmin = input("Kelimenin tamamini tahmin edebilirsiniz : ")
+        if tahmin == kelime:
+            print("Tebrikler bildiniz...")
+            data=input("yeni oyuna devam etmeke istermisiniz ???")
+        if data=="e":
+        	kelime = random.choice(kelimeler)
+        elif data=="h":
+        	break
